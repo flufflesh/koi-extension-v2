@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import {
   TrashCan,
@@ -7,7 +7,11 @@ import {
   Plus,
   WhitePlus,
   Dots,
+  Cross,
 } from "../components/Icons";
+import Modal from "react-modal";
+import { ClearFields, Input, Save, Select } from "../components/shared";
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -146,11 +150,124 @@ const RightDots = styled.div`
   height: 35px;
   width: 33px;
 `;
+const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+  & div {
+    display: flex;
+    gap: 15px;
+    flex-direction: row;
+    & section {
+      flex: 1;
+      & p {
+        margin-bottom: 5px;
+        color: #fff;
+      }
+    }
+    & button {
+      color: white;
+      font-weight: 600;
+    }
+  }
+`;
+
 const Diy = () => {
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+  const save = () => {
+    setIsOpen(false);
+  };
   const diyGroupsExample: any[] = Array(20).fill("DIY Group Example");
   const diyItemsExample = Array(30).fill({ item1: "Fill", item2: 2, item3: 3 });
   return (
     <Wrapper>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        closeTimeoutMS={500}
+        style={{
+          content: {
+            background: "#232539",
+            height: "400px",
+            width: "600px",
+            top: "50%",
+            left: "50%",
+            marginLeft: "-15%",
+            marginTop: "-10%",
+            border: "none",
+            borderRadius: 20,
+          },
+          overlay: {
+            background: `linear-gradient(
+              180deg,
+              rgba(11, 14, 55, 0.75) 0%,
+              rgba(8, 10, 46, 0.75) 98.74%
+            )`,
+          },
+        }}
+      >
+        <ModalContent>
+          <div>
+            <h1 style={{ color: "#fff" }}>New DIY Script</h1>
+            <button
+              style={{
+                marginLeft: "auto",
+                background: "linear-gradient(180deg, #FF496F 0%, #DA002D 100%)",
+                border: "none",
+                borderRadius: 10,
+                padding: 3,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              onClick={closeModal}
+            >
+              <Cross />
+            </button>
+          </div>
+          <div>
+            <section>
+              <p>Mode</p>
+              <Select>
+                <option>Fill</option>
+              </Select>
+            </section>
+            <section>
+              <p>Target Website</p>
+              <Input placeholder="Optional"></Input>
+            </section>
+            <section>
+              <p>DIY Method</p>
+              <Select>
+                <option>XPath</option>
+              </Select>
+            </section>
+          </div>
+          <div>
+            <section>
+              <p>Fill Words</p>
+              <Input placeholder="+fillword, -fillword"></Input>
+            </section>
+          </div>
+          <div>
+            <section>
+              <p>XPath</p>
+              <Input placeholder="Paste XPath Here"></Input>
+            </section>
+          </div>
+          <div>
+            <ClearFields>Clear Fields</ClearFields>
+            <Save onClick={save}>Save</Save>
+          </div>
+        </ModalContent>
+      </Modal>
       <Header>
         <h3 style={{ color: "#fff", fontSize: 34, fontWeight: 700 }}>DIY</h3>
         <div
@@ -161,7 +278,7 @@ const Diy = () => {
             gap: "10px",
           }}
         >
-          <RightPlus>
+          <RightPlus onClick={openModal}>
             <WhitePlus></WhitePlus>
           </RightPlus>
           <RightDots>

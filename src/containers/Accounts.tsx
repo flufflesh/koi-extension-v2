@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Dots, Eye, TrashCan, WhitePlus } from "../components/Icons";
+import { Cross, Dots, Eye, TrashCan, WhitePlus } from "../components/Icons";
+import Modal from "react-modal";
+import { ClearFields, Input, Save } from "../components/shared";
 
 const Wrapper = styled.div`
   display: flex;
@@ -114,14 +116,116 @@ const TableItem = styled.div`
     margin-top: 10px;
   }
 `;
+const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+  & div {
+    display: flex;
+    gap: 15px;
+    flex-direction: row;
+    & section {
+      flex: 1;
+      & p {
+        margin-bottom: 5px;
+        color: #fff;
+      }
+    }
+    & button {
+      color: white;
+      font-weight: 600;
+    }
+  }
+`;
 const Accounts = () => {
   const accountsExample: any[] = Array(30).fill("123");
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+  const save = () => {
+    setIsOpen(false);
+  };
+  const [time, setTime] = useState(new Date().toLocaleTimeString());
+  useEffect(() => {
+    let interval = setInterval(() => {
+      setTime(new Date().toLocaleTimeString());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
   return (
     <Wrapper>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        closeTimeoutMS={500}
+        style={{
+          content: {
+            background: "#232539",
+            height: "240px",
+            width: "700px",
+            top: "50%",
+            left: "50%",
+            marginLeft: "-15%",
+            marginTop: "-5%",
+            border: "none",
+            borderRadius: 20,
+          },
+          overlay: {
+            background: `linear-gradient(
+              180deg,
+              rgba(11, 14, 55, 0.75) 0%,
+              rgba(8, 10, 46, 0.75) 98.74%
+            )`,
+          },
+        }}
+      >
+        <ModalContent>
+          <div>
+            <h1 style={{ color: "#fff" }}>New Gamestop Account</h1>
+            <button
+              style={{
+                marginLeft: "auto",
+                background: "linear-gradient(180deg, #FF496F 0%, #DA002D 100%)",
+                border: "none",
+                borderRadius: 10,
+                padding: 3,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              onClick={closeModal}
+            >
+              <Cross />
+            </button>
+          </div>
+          <div>
+            <section>
+              <p>E-Mail Address</p>
+              <Input />
+            </section>
+            <section>
+              <p>Password</p>
+              <Input />
+            </section>
+          </div>
+          <div>
+            <ClearFields>Clear Fields</ClearFields>
+            <Save>Save</Save>
+          </div>
+        </ModalContent>
+      </Modal>
       <Header>
-        <h3 style={{ color: "#fff", fontSize: 34, fontWeight: 700 }}>
-          Accounts
-        </h3>
+        <div>
+          <h3 style={{ color: "#fff", fontSize: 34, fontWeight: 700 }}>
+            Accounts
+          </h3>
+          <span style={{ color: "rgba(255,255,255,0.5)" }}>{time}</span>
+        </div>
         <div
           style={{
             marginLeft: "auto",
@@ -130,7 +234,7 @@ const Accounts = () => {
             gap: "10px",
           }}
         >
-          <RightPlus>
+          <RightPlus onClick={openModal}>
             <WhitePlus></WhitePlus>
           </RightPlus>
           <RightDots>

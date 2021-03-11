@@ -8,7 +8,11 @@ import {
   WhitePlus,
   Dots,
   Play,
+  Cross,
 } from "../components/Icons";
+import Modal from "react-modal";
+import { ClearFields, Input, Save, Select } from "../components/shared";
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -130,7 +134,60 @@ const DeleteAll = styled.button`
   padding: 15px 0;
   color: white;
 `;
+const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+  & div {
+    display: flex;
+    gap: 15px;
+    flex-direction: row;
+    & section {
+      flex: 1;
+      & p {
+        margin-bottom: 5px;
+        color: #fff;
+      }
+    }
+    & button {
+      color: white;
+      font-weight: 600;
+    }
+  }
+`;
+const PasteIn = styled.div`
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.1) 99.8%
+  );
+  border: 1px dashed rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15),
+    inset 0px 0px 3px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  width: 100%;
+  color: white;
+  height: 100px;
+  resize: none;
+  &::placeholder {
+    text-align: center;
+    background-image: url("/AccountsRed.svg");
+    background-repeat: no-repeat;
+  }
+`;
 const NikeSNKRS = () => {
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+  const save = () => {
+    setIsOpen(false);
+  };
   const nikeArray = Array(30).fill("1");
   const [time, setTime] = useState(new Date().toLocaleTimeString());
   useEffect(() => {
@@ -141,6 +198,80 @@ const NikeSNKRS = () => {
   }, []);
   return (
     <Wrapper>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        closeTimeoutMS={500}
+        style={{
+          content: {
+            background: "#232539",
+            height: "500px",
+            width: "700px",
+            top: "50%",
+            left: "50%",
+            marginLeft: "-15%",
+            marginTop: "-15%",
+            border: "none",
+            borderRadius: 20,
+          },
+          overlay: {
+            background: `linear-gradient(
+              180deg,
+              rgba(11, 14, 55, 0.75) 0%,
+              rgba(8, 10, 46, 0.75) 98.74%
+            )`,
+          },
+        }}
+      >
+        <ModalContent>
+          <div>
+            <h1 style={{ color: "#fff" }}>New Nike Task</h1>
+            <button
+              style={{
+                marginLeft: "auto",
+                background: "linear-gradient(180deg, #FF496F 0%, #DA002D 100%)",
+                border: "none",
+                borderRadius: 10,
+                padding: 3,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              onClick={closeModal}
+            >
+              <Cross />
+            </button>
+          </div>
+          <div>
+            <section>
+              <p>Link</p>
+              <Input></Input>
+            </section>
+            <section>
+              <p>Region</p>
+              <Select>
+                <option value="US">United States</option>
+              </Select>
+            </section>
+            <section>
+              <p>Drop Time</p>
+              <Select>
+                <option>03-04-2021</option>
+              </Select>
+            </section>
+          </div>
+          <div>
+            <PasteIn contentEditable></PasteIn>
+          </div>
+          <div>
+            <PasteIn contentEditable></PasteIn>
+          </div>
+          <div>
+            <ClearFields>Clear Fields</ClearFields>
+            <Save onClick={save}>Save</Save>
+          </div>
+        </ModalContent>
+      </Modal>
       <Header>
         <div>
           <h3 style={{ color: "#fff", fontSize: 34, fontWeight: 700 }}>
@@ -156,7 +287,7 @@ const NikeSNKRS = () => {
             gap: "10px",
           }}
         >
-          <RightPlus>
+          <RightPlus onClick={openModal}>
             <WhitePlus></WhitePlus>
           </RightPlus>
           <RightDots>

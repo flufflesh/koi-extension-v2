@@ -16,6 +16,7 @@ import Restocks from "./containers/Restocks";
 import Addons from "./containers/Addons";
 import NikeSNKRS from "./containers/NikeSNKRS";
 import Accounts from "./containers/Accounts";
+import StoreScripts from "./containers/StoreScripts";
 
 const MainRoutes = styled.div`
   display: flex;
@@ -53,6 +54,9 @@ function App() {
           </Route>
           <Route path="/accounts">
             <Accounts></Accounts>
+          </Route>
+          <Route path="/store-scripts">
+            <StoreScripts />
           </Route>
         </MainRoutes>
       </Switch>

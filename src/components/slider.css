@@ -41,7 +41,8 @@
 }
 
 input:checked + .slider {
-  background: linear-gradient(180deg, #fc7818 1.55%, #fc5818 96.94%);
+  background: linear-gradient(180deg, #ff5665 1.55%, #e23342 96.94%);
+  /* background: linear-gradient(180deg, #fc7818 1.55%, #fc5818 96.94%); */
 }
 
 input:focus + .slider {
