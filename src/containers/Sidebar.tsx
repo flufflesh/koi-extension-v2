@@ -169,7 +169,14 @@ const Sidebar = () => {
             <img src="https://media.discordapp.net/attachments/531633243766784000/810238293206892544/145948869_1319883351710309_6007634537060611904_n.png?width=373&height=466" />
             <section>
               <p style={{ color: "#fff", fontSize: 16 }}>Flufflés</p>
-              <p style={{ color: "#fff", fontSize: 12, opacity: "0.8" }}>
+              <p
+                style={{
+                  color: "#fff",
+                  fontSize: 12,
+                  opacity: "0.8",
+                  fontWeight: 400,
+                }}
+              >
                 #9765
               </p>
             </section>

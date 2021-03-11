@@ -226,6 +226,8 @@ const Select = styled.select`
   border: none;
   min-width: 200px;
   background-repeat: no-repeat;
+  font-weight: 600;
+
   & option {
     background: #2e2f48;
   }

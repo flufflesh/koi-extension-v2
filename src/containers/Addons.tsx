@@ -258,7 +258,7 @@ const Addons = () => {
                 <div
                   style={{ display: "flex", flexDirection: "column", gap: 4 }}
                 >
-                  <h4 style={{ fontWeight: 500, fontSize: 13 }}>Link</h4>
+                  <h4 style={{ fontWeight: 700, fontSize: 13 }}>Link</h4>
                   <Input placeholder="Paste link here" />
                 </div>
               </GeneralAddon>
@@ -295,7 +295,7 @@ const Addons = () => {
                       minWidth: 170,
                     }}
                   >
-                    <h4 style={{ fontWeight: 500, fontSize: 13 }}>
+                    <h4 style={{ fontWeight: 700, fontSize: 13 }}>
                       Website Name
                     </h4>
                     <Select></Select>
@@ -308,7 +308,7 @@ const Addons = () => {
                       minWidth: 160,
                     }}
                   >
-                    <h4 style={{ fontWeight: 500, fontSize: 13 }}>Interval</h4>
+                    <h4 style={{ fontWeight: 700, fontSize: 13 }}>Interval</h4>
                     <Input placeholder="1500ms" />
                   </div>
                 </div>
@@ -328,7 +328,7 @@ const Addons = () => {
                 <div
                   style={{ display: "flex", flexDirection: "column", gap: 4 }}
                 >
-                  <h4 style={{ fontWeight: 500, fontSize: 13 }}>Ban Sites</h4>
+                  <h4 style={{ fontWeight: 700, fontSize: 13 }}>Ban Sites</h4>
                   <Input placeholder='Paste Sites Here (separated by ",")' />
                 </div>
               </GeneralAddon>
@@ -347,7 +347,7 @@ const Addons = () => {
                 <div
                   style={{ display: "flex", flexDirection: "column", gap: 4 }}
                 >
-                  <h4 style={{ fontWeight: 500, fontSize: 13 }}>Twitter ID</h4>
+                  <h4 style={{ fontWeight: 700, fontSize: 13 }}>Twitter ID</h4>
                   <Input placeholder="Paste Twitter ID Here" />
                 </div>
               </GeneralAddon>
@@ -366,7 +366,7 @@ const Addons = () => {
                 <div
                   style={{ display: "flex", flexDirection: "column", gap: 4 }}
                 >
-                  <h4 style={{ fontWeight: 500, fontSize: 13 }}>Discord ID</h4>
+                  <h4 style={{ fontWeight: 700, fontSize: 13 }}>Discord ID</h4>
                   <Input placeholder="Paste Discord ID Here" />
                 </div>
               </GeneralAddon>
@@ -554,7 +554,7 @@ const Addons = () => {
                       width: "100%",
                     }}
                   >
-                    <h4 style={{ fontWeight: 500, fontSize: 13 }}>
+                    <h4 style={{ fontWeight: 700, fontSize: 13 }}>
                       Profile Group
                     </h4>
                     <Select></Select>
@@ -568,7 +568,7 @@ const Addons = () => {
                       width: "100%",
                     }}
                   >
-                    <h4 style={{ fontWeight: 500, fontSize: 13 }}>
+                    <h4 style={{ fontWeight: 700, fontSize: 13 }}>
                       Windows Per Profile
                     </h4>
                     <Select></Select>
@@ -606,7 +606,7 @@ const Addons = () => {
                       width: "100%",
                     }}
                   >
-                    <h4 style={{ fontWeight: 500, fontSize: 13 }}>
+                    <h4 style={{ fontWeight: 700, fontSize: 13 }}>
                       Profile Group
                     </h4>
                     <Select></Select>
