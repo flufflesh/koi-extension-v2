@@ -50,7 +50,7 @@ const Login = () => {
           <img src="koi-icon.png" />
           <h3>Login</h3>
           <button>
-            <Link to="/profiles">
+            <Link to="/profiles" style={{ height: "100%", width: "100%" }}>
               Login with <DiscordWithWordmark></DiscordWithWordmark>
             </Link>
           </button>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import styled from "styled-components";
 import {
   TrashCan,
@@ -132,6 +133,12 @@ const DeleteAll = styled.button`
 const Restocks = () => {
   const restocksArray = Array(30).fill("1");
   const [time, setTime] = useState(new Date().toLocaleTimeString());
+  const deleteAll = () => {
+    toast("Deleting all", { icon: "❌" });
+  };
+  const startAll = () => {
+    toast.success("Starting all");
+  };
   useEffect(() => {
     let interval = setInterval(() => {
       setTime(new Date().toLocaleTimeString());
@@ -140,6 +147,17 @@ const Restocks = () => {
   }, []);
   return (
     <Wrapper>
+      <Toaster
+        position="bottom-right"
+        toastOptions={{
+          style: {
+            background: "#292a47",
+            boxShadow:
+              "box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15), inset 0px 0px 3px rgba(0, 0, 0, 0.05)",
+            color: "white",
+          },
+        }}
+      />
       <Header>
         <div>
           <h3 style={{ color: "#fff", fontSize: 34, fontWeight: 700 }}>
@@ -208,9 +226,9 @@ const Restocks = () => {
           </Table>
         </Table>
         <ButtonsContainer>
-          <StartAll>Start All</StartAll>
+          <StartAll onClick={startAll}>Start All</StartAll>
           <EditAll>Edit All</EditAll>
-          <DeleteAll>Delete All</DeleteAll>
+          <DeleteAll onClick={deleteAll}>Delete All</DeleteAll>
         </ButtonsContainer>
       </RestocksContainer>
     </Wrapper>

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Cross, Dots, Eye, TrashCan, WhitePlus } from "../components/Icons";
 import Modal from "react-modal";
 import { ClearFields, Input, Save } from "../components/shared";
+import toast, { Toaster } from "react-hot-toast";
 
 const Wrapper = styled.div`
   display: flex;
@@ -148,6 +149,26 @@ const Accounts = () => {
     setIsOpen(false);
   };
   const save = () => {
+    toast((t) => {
+      return (
+        <span style={{ color: "white" }}>
+          Saved Task!
+          <button
+            onClick={() => toast.dismiss(t.id)}
+            style={{
+              border: "none",
+              background: "linear-gradient(180deg, #FF496F 0%, #DA002D 100%)",
+              color: "white",
+              padding: 10,
+              borderRadius: 10,
+              marginLeft: 10,
+            }}
+          >
+            Dismiss
+          </button>
+        </span>
+      );
+    });
     setIsOpen(false);
   };
   const [time, setTime] = useState(new Date().toLocaleTimeString());
@@ -159,6 +180,16 @@ const Accounts = () => {
   }, []);
   return (
     <Wrapper>
+      <Toaster
+        position="bottom-right"
+        toastOptions={{
+          style: {
+            background: "#292a47",
+            boxShadow:
+              "box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15), inset 0px 0px 3px rgba(0, 0, 0, 0.05)",
+          },
+        }}
+      />
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -215,7 +246,7 @@ const Accounts = () => {
           </div>
           <div>
             <ClearFields>Clear Fields</ClearFields>
-            <Save>Save</Save>
+            <Save onClick={save}>Save</Save>
           </div>
         </ModalContent>
       </Modal>

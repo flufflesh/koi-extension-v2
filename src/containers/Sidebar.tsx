@@ -81,6 +81,7 @@ const StyledDiv = styled.div`
   margin: 0 10px;
   width: 250px;
   text-decoration: none;
+  cursor: pointer;
   & div {
     font-size: 16px;
     padding-left: 20px;
@@ -103,9 +104,9 @@ const SettingsDisplay = styled.div`
   height: 172px;
   padding-right: 20px;
   width: 320px;
-  left: 100%;
+  left: 110%;
   bottom: -150%;
-  background: #222445;
+  background: rgba(34, 36, 69, 0.5);
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3),
     inset 0px 0px 3px rgba(0, 0, 0, 0.05);
   backdrop-filter: blur(27.1828px);
@@ -148,11 +149,13 @@ const Account = styled.div`
 const Sidebar = () => {
   const [isHovering, setIsHovering] = useState(false);
   const hover = () => {
-    setIsHovering(true);
+    if (!isHovering) {
+      setIsHovering(true);
+    } else {
+      setIsHovering(false);
+    }
   };
-  const leave = () => {
-    setIsHovering(false);
-  };
+
   return (
     <Wrapper>
       <div style={{ textAlign: "center", marginTop: 10, marginBottom: 10 }}>
@@ -207,7 +210,7 @@ const Sidebar = () => {
             <p>Add-ons</p>
           </div>
         </StyledLink>
-        <StyledDiv onMouseEnter={hover} onMouseLeave={leave}>
+        <StyledDiv onClick={hover}>
           <div>
             <Settings />
             <p>Settings</p>

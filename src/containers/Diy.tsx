@@ -11,6 +11,7 @@ import {
 } from "../components/Icons";
 import Modal from "react-modal";
 import { ClearFields, Input, Save, Select } from "../components/shared";
+import toast, { Toaster } from "react-hot-toast";
 
 const Wrapper = styled.div`
   display: flex;
@@ -182,12 +183,43 @@ const Diy = () => {
     setIsOpen(false);
   };
   const save = () => {
+    toast((t) => {
+      return (
+        <span style={{ color: "white" }}>
+          Saved DIY!
+          <button
+            onClick={() => toast.dismiss(t.id)}
+            style={{
+              border: "none",
+              background: "linear-gradient(180deg, #FF496F 0%, #DA002D 100%)",
+              color: "white",
+              padding: 10,
+              borderRadius: 10,
+              marginLeft: 10,
+            }}
+          >
+            Dismiss
+          </button>
+        </span>
+      );
+    });
     setIsOpen(false);
   };
   const diyGroupsExample: any[] = Array(20).fill("DIY Group Example");
   const diyItemsExample = Array(30).fill({ item1: "Fill", item2: 2, item3: 3 });
   return (
     <Wrapper>
+      <Toaster
+        position="bottom-right"
+        toastOptions={{
+          style: {
+            background: "#292a47",
+            boxShadow:
+              "box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15), inset 0px 0px 3px rgba(0, 0, 0, 0.05)",
+            color: "white",
+          },
+        }}
+      />
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}

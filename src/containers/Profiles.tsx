@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import {
   TrashCan,
@@ -8,8 +8,13 @@ import {
   WhitePlus,
   Dots,
   Eye,
+  Cross,
 } from "../components/Icons";
 import SelectedCard from "../components/SelectedCard";
+import Modal from "react-modal";
+import { Input, Save } from "../components/shared";
+import Slider from "../components/Slider";
+import toast, { Toaster } from "react-hot-toast";
 
 const Wrapper = styled.div`
   display: flex;
@@ -243,9 +248,369 @@ const DotContainer = styled.button`
   justify-content: center;
   align-items: center;
 `;
+const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  & div {
+    display: flex;
+    gap: 15px;
+    flex-direction: row;
+    & section {
+      flex: 1;
+      & p {
+        margin-bottom: 5px;
+        color: #fff;
+      }
+    }
+    & button {
+      color: white;
+      font-weight: 600;
+    }
+  }
+`;
+const ModalNav = styled.div`
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  flex: 1;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`;
+const ModalNavButton = styled.div`
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 700;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  align-items: center;
+  height: 100%;
+  &.active {
+    background: linear-gradient(180deg, #fc7818 1.55%, #fc5818 96.94%);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.35);
+    border-radius: 15px;
+    color: #fff;
+  }
+`;
 const Profiles = () => {
+  const accountsExample: any[] = Array(30).fill("123");
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [modalName, setModalName] = useState("General");
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+  const save = () => {
+    if (isSaving) {
+      return;
+    }
+    setIsSaving(true);
+    toast((t) => {
+      return (
+        <span style={{ color: "white" }}>
+          Saved profile!
+          <button
+            onClick={() => toast.dismiss(t.id)}
+            style={{
+              border: "none",
+              background: "linear-gradient(180deg, #FF496F 0%, #DA002D 100%)",
+              color: "white",
+              padding: 10,
+              borderRadius: 10,
+              marginLeft: 10,
+            }}
+          >
+            Dismiss
+          </button>
+        </span>
+      );
+    });
+    setIsOpen(false);
+    setTimeout(() => {
+      setIsSaving(false);
+    }, 500);
+  };
+  const WhichModal = () => {
+    if (modalName === "General") {
+      return (
+        <React.Fragment>
+          <div>
+            <section>
+              <p>Profile Name</p>
+              <Input />
+            </section>
+          </div>
+          <div>
+            <section>
+              <p>First Name</p>
+              <Input />
+            </section>
+            <section>
+              <p>Last Name</p>
+              <Input />
+            </section>
+          </div>
+          <div>
+            <section>
+              <p>E-Mail Address</p>
+              <Input />
+            </section>
+            <section>
+              <p>Phone Number</p>
+              <Input />
+            </section>
+          </div>
+          <div style={{ marginTop: 115 }}>
+            <Save
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                setModalName("Billing");
+              }}
+            >
+              Continue
+            </Save>
+          </div>
+        </React.Fragment>
+      );
+    } else if (modalName === "Billing") {
+      return (
+        <React.Fragment>
+          <div>
+            <section>
+              <p>Address 1</p>
+              <Input />
+            </section>
+          </div>
+          <div>
+            <section>
+              <p>Address 2</p>
+              <Input />
+            </section>
+          </div>
+          <div>
+            <section>
+              <p>Country</p>
+              <Input />
+            </section>
+            <section>
+              <p>State</p>
+              <Input />
+            </section>
+          </div>
+          <div>
+            <section>
+              <p>City</p>
+              <Input />
+            </section>
+            <section>
+              <p>Zip Code</p>
+              <Input />
+            </section>
+          </div>
+          <div style={{ marginTop: 47 }}>
+            <Save
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                setModalName("Shipping");
+              }}
+            >
+              Continue
+            </Save>
+          </div>
+        </React.Fragment>
+      );
+    } else if (modalName === "Shipping") {
+      return (
+        <React.Fragment>
+          <div>
+            <section>
+              <p>Address 1</p>
+              <Input />
+            </section>
+          </div>
+          <div>
+            <section>
+              <p>Address 2</p>
+              <Input />
+            </section>
+          </div>
+          <div>
+            <section>
+              <p>Country</p>
+              <Input />
+            </section>
+            <section>
+              <p>State</p>
+              <Input />
+            </section>
+          </div>
+          <div>
+            <section>
+              <p>City</p>
+              <Input />
+            </section>
+            <section>
+              <p>Zip Code</p>
+              <Input />
+            </section>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <p style={{ color: "#fff" }}>
+              Shipping address same as billing address
+            </p>
+            <Slider></Slider>
+          </div>
+          <div style={{ marginTop: 4 }}>
+            <Save
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                setModalName("Payment");
+              }}
+            >
+              Continue
+            </Save>
+          </div>
+        </React.Fragment>
+      );
+    } else if (modalName === "Payment") {
+      return (
+        <React.Fragment>
+          <div>
+            <section>
+              <p>Card Number</p>
+              <Input />
+            </section>
+          </div>
+          <div>
+            <section>
+              <p>Expiration Date</p>
+              <Input />
+            </section>
+            <section>
+              <p>CVV</p>
+              <Input />
+            </section>
+          </div>
+          <div style={{ marginTop: 184 }}>
+            <Save style={{ cursor: "pointer" }} onClick={save}>
+              Save
+            </Save>
+          </div>
+        </React.Fragment>
+      );
+    } else {
+      return <></>;
+    }
+  };
   return (
     <Wrapper>
+      <Toaster
+        position="bottom-right"
+        toastOptions={{
+          style: {
+            background: "#292a47",
+            boxShadow:
+              "box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15), inset 0px 0px 3px rgba(0, 0, 0, 0.05)",
+            color: "white",
+          },
+        }}
+      />
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        closeTimeoutMS={500}
+        style={{
+          content: {
+            background: "#232539",
+            height: "540px",
+            width: "600px",
+            top: "35%",
+            left: "50%",
+            marginLeft: "-15%",
+            marginTop: "-7%",
+            border: "none",
+            borderRadius: 20,
+          },
+          overlay: {
+            background: `linear-gradient(
+              180deg,
+              rgba(11, 14, 55, 0.75) 0%,
+              rgba(8, 10, 46, 0.75) 98.74%
+            )`,
+          },
+        }}
+      >
+        <ModalContent>
+          <div>
+            <h1 style={{ color: "#fff" }}>New Profile</h1>
+            <button
+              style={{
+                marginLeft: "auto",
+                background: "linear-gradient(180deg, #FF496F 0%, #DA002D 100%)",
+                border: "none",
+                borderRadius: 10,
+                padding: 3,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              onClick={closeModal}
+            >
+              <Cross />
+            </button>
+          </div>
+          <div>
+            <ModalNav>
+              <ModalNavButton
+                className={modalName === "General" ? "active" : ""}
+                onClick={() => {
+                  setModalName("General");
+                }}
+              >
+                General
+              </ModalNavButton>
+              <ModalNavButton
+                className={modalName === "Billing" ? "active" : ""}
+                onClick={() => {
+                  setModalName("Billing");
+                }}
+              >
+                Billing
+              </ModalNavButton>
+              <ModalNavButton
+                className={modalName === "Shipping" ? "active" : ""}
+                onClick={() => {
+                  setModalName("Shipping");
+                }}
+              >
+                Shipping
+              </ModalNavButton>
+              <ModalNavButton
+                className={modalName === "Payment" ? "active" : ""}
+                onClick={() => {
+                  setModalName("Payment");
+                }}
+              >
+                Payment
+              </ModalNavButton>
+            </ModalNav>
+          </div>
+          <WhichModal></WhichModal>
+        </ModalContent>
+      </Modal>
       <Header>
         <h3 style={{ color: "#fff", fontSize: 34, fontWeight: 700 }}>
           Profiles
@@ -263,7 +628,7 @@ const Profiles = () => {
             <option>hi</option>
             <option>test2</option>
           </Select>
-          <RightPlus>
+          <RightPlus onClick={openModal}>
             <WhitePlus></WhitePlus>
           </RightPlus>
           <RightDots>
