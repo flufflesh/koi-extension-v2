@@ -17,6 +17,8 @@ import Addons from "./containers/Addons";
 import NikeSNKRS from "./containers/NikeSNKRS";
 import Accounts from "./containers/Accounts";
 import StoreScripts from "./containers/StoreScripts";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 const MainRoutes = styled.div`
   display: flex;
@@ -27,40 +29,42 @@ const MainRoutes = styled.div`
 
 function App() {
   return (
-    <MemoryRouter>
-      <Switch>
-        <Route exact path="/">
-          <Login />
-        </Route>
-        <MainRoutes>
-          <Sidebar />
-          <Route path="/profiles">
-            <Profiles></Profiles>
+    <DndProvider backend={HTML5Backend}>
+      <MemoryRouter>
+        <Switch>
+          <Route exact path="/">
+            <Login />
           </Route>
-          <Route path="/diy">
-            <Diy></Diy>
-          </Route>
-          <Route path="/group-scripts">
-            <GroupScripts></GroupScripts>
-          </Route>
-          <Route path="/restocks">
-            <Restocks></Restocks>
-          </Route>
-          <Route path="/addons">
-            <Addons></Addons>
-          </Route>
-          <Route path="/nike-snkrs">
-            <NikeSNKRS></NikeSNKRS>
-          </Route>
-          <Route path="/accounts">
-            <Accounts></Accounts>
-          </Route>
-          <Route path="/store-scripts">
-            <StoreScripts />
-          </Route>
-        </MainRoutes>
-      </Switch>
-    </MemoryRouter>
+          <MainRoutes>
+            <Sidebar />
+            <Route path="/profiles">
+              <Profiles></Profiles>
+            </Route>
+            <Route path="/diy">
+              <Diy></Diy>
+            </Route>
+            <Route path="/group-scripts">
+              <GroupScripts></GroupScripts>
+            </Route>
+            <Route path="/restocks">
+              <Restocks></Restocks>
+            </Route>
+            <Route path="/addons">
+              <Addons></Addons>
+            </Route>
+            <Route path="/nike-snkrs">
+              <NikeSNKRS></NikeSNKRS>
+            </Route>
+            <Route path="/accounts">
+              <Accounts></Accounts>
+            </Route>
+            <Route path="/store-scripts">
+              <StoreScripts />
+            </Route>
+          </MainRoutes>
+        </Switch>
+      </MemoryRouter>
+    </DndProvider>
   );
 }
 

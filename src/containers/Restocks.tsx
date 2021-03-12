@@ -110,6 +110,7 @@ const StartAll = styled.button`
   border-radius: 10px;
   border: none;
   color: white;
+  font-weight: 700;
   padding: 15px 0;
 `;
 const EditAll = styled.button`
@@ -117,6 +118,7 @@ const EditAll = styled.button`
   background: linear-gradient(180deg, #626bff 1.55%, #424dff 96.94%);
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.35);
   border-radius: 10px;
+  font-weight: 700;
   border: none;
   padding: 15px 0;
   color: white;
@@ -125,6 +127,7 @@ const DeleteAll = styled.button`
   flex: 1;
   background: linear-gradient(180deg, #ff5665 1.55%, #e23342 96.94%);
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.35);
+  font-weight: 700;
   border-radius: 10px;
   border: none;
   padding: 15px 0;

@@ -1,4 +1,6 @@
+import React from "react";
 import styled from "styled-components";
+import Slider from "./Slider";
 
 export const Input = styled.input`
   background: linear-gradient(
@@ -65,3 +67,182 @@ export const BlueButton = styled.button`
   height: 40px;
   flex: 1;
 `;
+
+export const WhichModal = ({ modalName, setModalName, save }: any) => {
+  if (modalName === "General") {
+    return (
+      <React.Fragment>
+        <div>
+          <section>
+            <p>Profile Name</p>
+            <Input />
+          </section>
+        </div>
+        <div>
+          <section>
+            <p>First Name</p>
+            <Input />
+          </section>
+          <section>
+            <p>Last Name</p>
+            <Input />
+          </section>
+        </div>
+        <div>
+          <section>
+            <p>E-Mail Address</p>
+            <Input />
+          </section>
+          <section>
+            <p>Phone Number</p>
+            <Input />
+          </section>
+        </div>
+        <div style={{ marginTop: 115 }}>
+          <Save
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              setModalName("Billing");
+            }}
+          >
+            Continue
+          </Save>
+        </div>
+      </React.Fragment>
+    );
+  } else if (modalName === "Billing") {
+    return (
+      <React.Fragment>
+        <div>
+          <section>
+            <p>Address 1</p>
+            <Input />
+          </section>
+        </div>
+        <div>
+          <section>
+            <p>Address 2</p>
+            <Input />
+          </section>
+        </div>
+        <div>
+          <section>
+            <p>Country</p>
+            <Input />
+          </section>
+          <section>
+            <p>State</p>
+            <Input />
+          </section>
+        </div>
+        <div>
+          <section>
+            <p>City</p>
+            <Input />
+          </section>
+          <section>
+            <p>Zip Code</p>
+            <Input />
+          </section>
+        </div>
+        <div style={{ marginTop: 47 }}>
+          <Save
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              setModalName("Shipping");
+            }}
+          >
+            Continue
+          </Save>
+        </div>
+      </React.Fragment>
+    );
+  } else if (modalName === "Shipping") {
+    return (
+      <React.Fragment>
+        <div>
+          <section>
+            <p>Address 1</p>
+            <Input />
+          </section>
+        </div>
+        <div>
+          <section>
+            <p>Address 2</p>
+            <Input />
+          </section>
+        </div>
+        <div>
+          <section>
+            <p>Country</p>
+            <Input />
+          </section>
+          <section>
+            <p>State</p>
+            <Input />
+          </section>
+        </div>
+        <div>
+          <section>
+            <p>City</p>
+            <Input />
+          </section>
+          <section>
+            <p>Zip Code</p>
+            <Input />
+          </section>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <p style={{ color: "#fff" }}>
+            Shipping address same as billing address
+          </p>
+          <Slider></Slider>
+        </div>
+        <div style={{ marginTop: 4 }}>
+          <Save
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              setModalName("Payment");
+            }}
+          >
+            Continue
+          </Save>
+        </div>
+      </React.Fragment>
+    );
+  } else if (modalName === "Payment") {
+    return (
+      <React.Fragment>
+        <div>
+          <section>
+            <p>Card Number</p>
+            <Input />
+          </section>
+        </div>
+        <div>
+          <section>
+            <p>Expiration Date</p>
+            <Input />
+          </section>
+          <section>
+            <p>CVV</p>
+            <Input />
+          </section>
+        </div>
+        <div style={{ marginTop: 184 }}>
+          <Save style={{ cursor: "pointer" }} onClick={save}>
+            Save
+          </Save>
+        </div>
+      </React.Fragment>
+    );
+  } else {
+    return <></>;
+  }
+};

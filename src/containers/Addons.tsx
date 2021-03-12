@@ -104,6 +104,12 @@ const ScriptsAddon = styled.div`
     width: 42px;
     height: 42px;
   }
+
+  & section {
+    & * {
+      font-weight: 700;
+    }
+  }
   padding: 10px;
   flex: 1;
 `;
@@ -148,10 +154,12 @@ const Select = styled.select`
     background: #2e2f48;
   }
 `;
-const GreenButton = styled.div`
+const GreenButton = styled.button`
+  border: none;
   border-radius: 10px;
   background: linear-gradient(180deg, #00da0d 0%, #00b20b 100%);
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.35);
+  font-weight: 700;
   color: white;
 `;
 const Addons = () => {
@@ -444,7 +452,7 @@ const Addons = () => {
                     gap: 10,
                   }}
                 >
-                  <div
+                  <section
                     style={{
                       flex: 1,
                       display: "flex",
@@ -454,8 +462,8 @@ const Addons = () => {
                   >
                     <Slider></Slider>
                     <span>Autocart</span>
-                  </div>
-                  <div
+                  </section>
+                  <section
                     style={{
                       flex: 1,
                       display: "flex",
@@ -465,9 +473,9 @@ const Addons = () => {
                   >
                     <Slider></Slider>
                     <span>Skip Cart</span>
-                  </div>
+                  </section>
                 </div>
-                <div
+                <section
                   style={{
                     display: "flex",
                     flexDirection: "row-reverse",
@@ -477,8 +485,8 @@ const Addons = () => {
                 >
                   <Slider></Slider>
                   <span>Product Page Fast Mode</span>
-                </div>
-                <div
+                </section>
+                <section
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -487,8 +495,8 @@ const Addons = () => {
                 >
                   <Slider></Slider>
                   <span>Billing Page Fast Mode</span>
-                </div>
-                <div
+                </section>
+                <section
                   style={{
                     display: "flex",
                     flexDirection: "row",
@@ -517,7 +525,7 @@ const Addons = () => {
                     <Slider></Slider>
                     <label>Paypal Mode</label>
                   </CheckboxDiv>
-                </div>
+                </section>
               </ScriptsAddon>
               <ScriptsAddon style={{ gap: 10 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>

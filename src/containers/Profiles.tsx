@@ -12,9 +12,12 @@ import {
 } from "../components/Icons";
 import SelectedCard from "../components/SelectedCard";
 import Modal from "react-modal";
-import { Input, Save } from "../components/shared";
+import { Input, Save, WhichModal } from "../components/shared";
 import Slider from "../components/Slider";
 import toast, { Toaster } from "react-hot-toast";
+import { useDrag } from "react-dnd";
+import ProfileCards from "../components/ProfileCards";
+import Profile from "../components/Profile";
 
 const Wrapper = styled.div`
   display: flex;
@@ -57,24 +60,31 @@ const profileGroupsExample = [
 ];
 const exampleCards = [
   {
+    cardName: "sanol",
     cardNumber: "1234 5678 9012 1234",
     cvv: "123",
     expiration: "01/23",
     type: "VISA",
   },
   {
+    cardName: "nanol",
+
     cardNumber: "1234 5678 9012 1234",
     cvv: "123",
     expiration: "01/23",
     type: "Mastercard",
   },
   {
+    cardName: "ganol",
+
     cardNumber: "1234 5678 9012 1234",
     cvv: "123",
     expiration: "01/23",
     type: "Mastercard",
   },
   {
+    cardName: "lanol",
+
     cardNumber: "1234 5678 9012 1234",
     cvv: "123",
     expiration: "01/23",
@@ -178,24 +188,7 @@ const ProfileGroupsMain = styled.div`
   overflow-y: auto;
   gap: 10px;
 `;
-const Profile = styled.div`
-  min-height: 40px;
-  width: 230px;
-  background-color: rgba(255, 255, 255, 0.1);
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
 
-  padding: 0 10px;
-  border-radius: 10px;
-  opacity: 0.8;
-  & p {
-    font-size: 16px;
-  }
-  & svg {
-    margin-left: auto;
-  }
-`;
 const RightPlus = styled.div`
   background: linear-gradient(180deg, #00da0d 0%, #00b20b 100%);
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.35);
@@ -298,6 +291,7 @@ const ModalNavButton = styled.div`
 `;
 const Profiles = () => {
   const accountsExample: any[] = Array(30).fill("123");
+
   const [modalIsOpen, setIsOpen] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [modalName, setModalName] = useState("General");
@@ -337,184 +331,7 @@ const Profiles = () => {
       setIsSaving(false);
     }, 500);
   };
-  const WhichModal = () => {
-    if (modalName === "General") {
-      return (
-        <React.Fragment>
-          <div>
-            <section>
-              <p>Profile Name</p>
-              <Input />
-            </section>
-          </div>
-          <div>
-            <section>
-              <p>First Name</p>
-              <Input />
-            </section>
-            <section>
-              <p>Last Name</p>
-              <Input />
-            </section>
-          </div>
-          <div>
-            <section>
-              <p>E-Mail Address</p>
-              <Input />
-            </section>
-            <section>
-              <p>Phone Number</p>
-              <Input />
-            </section>
-          </div>
-          <div style={{ marginTop: 115 }}>
-            <Save
-              style={{ cursor: "pointer" }}
-              onClick={() => {
-                setModalName("Billing");
-              }}
-            >
-              Continue
-            </Save>
-          </div>
-        </React.Fragment>
-      );
-    } else if (modalName === "Billing") {
-      return (
-        <React.Fragment>
-          <div>
-            <section>
-              <p>Address 1</p>
-              <Input />
-            </section>
-          </div>
-          <div>
-            <section>
-              <p>Address 2</p>
-              <Input />
-            </section>
-          </div>
-          <div>
-            <section>
-              <p>Country</p>
-              <Input />
-            </section>
-            <section>
-              <p>State</p>
-              <Input />
-            </section>
-          </div>
-          <div>
-            <section>
-              <p>City</p>
-              <Input />
-            </section>
-            <section>
-              <p>Zip Code</p>
-              <Input />
-            </section>
-          </div>
-          <div style={{ marginTop: 47 }}>
-            <Save
-              style={{ cursor: "pointer" }}
-              onClick={() => {
-                setModalName("Shipping");
-              }}
-            >
-              Continue
-            </Save>
-          </div>
-        </React.Fragment>
-      );
-    } else if (modalName === "Shipping") {
-      return (
-        <React.Fragment>
-          <div>
-            <section>
-              <p>Address 1</p>
-              <Input />
-            </section>
-          </div>
-          <div>
-            <section>
-              <p>Address 2</p>
-              <Input />
-            </section>
-          </div>
-          <div>
-            <section>
-              <p>Country</p>
-              <Input />
-            </section>
-            <section>
-              <p>State</p>
-              <Input />
-            </section>
-          </div>
-          <div>
-            <section>
-              <p>City</p>
-              <Input />
-            </section>
-            <section>
-              <p>Zip Code</p>
-              <Input />
-            </section>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-            }}
-          >
-            <p style={{ color: "#fff" }}>
-              Shipping address same as billing address
-            </p>
-            <Slider></Slider>
-          </div>
-          <div style={{ marginTop: 4 }}>
-            <Save
-              style={{ cursor: "pointer" }}
-              onClick={() => {
-                setModalName("Payment");
-              }}
-            >
-              Continue
-            </Save>
-          </div>
-        </React.Fragment>
-      );
-    } else if (modalName === "Payment") {
-      return (
-        <React.Fragment>
-          <div>
-            <section>
-              <p>Card Number</p>
-              <Input />
-            </section>
-          </div>
-          <div>
-            <section>
-              <p>Expiration Date</p>
-              <Input />
-            </section>
-            <section>
-              <p>CVV</p>
-              <Input />
-            </section>
-          </div>
-          <div style={{ marginTop: 184 }}>
-            <Save style={{ cursor: "pointer" }} onClick={save}>
-              Save
-            </Save>
-          </div>
-        </React.Fragment>
-      );
-    } else {
-      return <></>;
-    }
-  };
+  const onDrop = (item: any) => {};
   return (
     <Wrapper>
       <Toaster
@@ -608,7 +425,11 @@ const Profiles = () => {
               </ModalNavButton>
             </ModalNav>
           </div>
-          <WhichModal></WhichModal>
+          <WhichModal
+            modalName={modalName}
+            setModalName={setModalName}
+            save={save}
+          ></WhichModal>
         </ModalContent>
       </Modal>
       <Header>
@@ -648,10 +469,7 @@ const Profiles = () => {
           <ProfileGroupsMain>
             {profileGroupsExample.map((item, index) => {
               return (
-                <Profile key={index}>
-                  <p>{item.name}</p>
-                  <TrashCan></TrashCan>
-                </Profile>
+                <Profile key={index} item={item} onDrop={onDrop}></Profile>
               );
             })}
           </ProfileGroupsMain>
@@ -669,43 +487,13 @@ const Profiles = () => {
           >
             {exampleCards.map((value, index) => {
               return (
-                <Card key={index}>
-                  <CardDetails style={{ marginTop: 0 }}>
-                    {value.type === "VISA" ? <VISA /> : <Mastercard />}
-                    <div
-                      style={{ marginLeft: "auto", display: "flex", gap: 5 }}
-                    >
-                      <DotContainer>
-                        <Eye></Eye>
-                      </DotContainer>
-                      <DotContainer>
-                        <Dots></Dots>
-                      </DotContainer>
-                    </div>
-                  </CardDetails>
-                  <CardDetails>
-                    <p
-                      style={{
-                        fontSize: 20,
-                        fontWeight: 700,
-                        marginRight: 50,
-                        filter: "blur(0.5rem)",
-                      }}
-                    >
-                      {value.cardNumber}
-                    </p>
-                  </CardDetails>
-                  <CardDetails style={{ marginLeft: "auto", fontSize: 14 }}>
-                    <div>
-                      <p>{value.cvv}</p>
-                      <p style={{ fontSize: 10, opacity: 0.6 }}>CVV</p>
-                    </div>
-                    <div>
-                      <p>{value.expiration}</p>
-                      <p style={{ fontSize: 10, opacity: 0.6 }}>Expires</p>
-                    </div>
-                  </CardDetails>
-                </Card>
+                <ProfileCards
+                  value={value}
+                  type={"profiles"}
+                  name={index}
+                  key={index}
+                  blur={true}
+                ></ProfileCards>
               );
             })}
             <SelectedCard></SelectedCard>
@@ -722,38 +510,13 @@ const Profiles = () => {
           >
             {disabledCards.map((value, index) => {
               return (
-                <Card key={index} style={{ opacity: 0.4 }}>
-                  <CardDetails style={{ marginTop: 0 }}>
-                    {value.type === "VISA" ? <VISA /> : <Mastercard />}
-                    <div
-                      style={{ marginLeft: "auto", display: "flex", gap: 5 }}
-                    >
-                      <DotContainer>
-                        <Eye></Eye>
-                      </DotContainer>
-                      <DotContainer>
-                        <Dots></Dots>
-                      </DotContainer>
-                    </div>
-                  </CardDetails>
-                  <CardDetails>
-                    <p
-                      style={{ fontSize: 20, fontWeight: 700, marginRight: 50 }}
-                    >
-                      {value.cardNumber}
-                    </p>
-                  </CardDetails>
-                  <CardDetails style={{ marginLeft: "auto", fontSize: 14 }}>
-                    <div>
-                      <p>{value.cvv}</p>
-                      <p style={{ fontSize: 10, opacity: 0.6 }}>CVV</p>
-                    </div>
-                    <div>
-                      <p>{value.expiration}</p>
-                      <p style={{ fontSize: 10, opacity: 0.6 }}>Expires</p>
-                    </div>
-                  </CardDetails>
-                </Card>
+                <ProfileCards
+                  value={value}
+                  type={""}
+                  key={index}
+                  style={{ opacity: 0.4 }}
+                  blur={false}
+                ></ProfileCards>
               );
             })}
           </div>
