@@ -627,7 +627,9 @@ const Addons = () => {
                     alignItems: "center",
                   }}
                 >
-                  <span>Enable TL Dashboard Script Mode</span>
+                  <span style={{ fontWeight: 700 }}>
+                    Enable TL Dashboard Script Mode
+                  </span>
                   <Slider></Slider>
                 </div>
               </ScriptsAddon>

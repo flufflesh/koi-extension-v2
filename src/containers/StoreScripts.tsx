@@ -1,14 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import {
-  TrashCan,
-  DownArrow,
-  UpArrow,
-  Plus,
-  WhitePlus,
-  Dots,
-  Play,
-} from "../components/Icons";
 import StoreScript from "../components/StoreScript";
 const Wrapper = styled.div`
   display: flex;

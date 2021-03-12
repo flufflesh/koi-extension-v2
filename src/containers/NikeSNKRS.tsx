@@ -160,7 +160,7 @@ const ModalContent = styled.div`
     }
   }
 `;
-const PasteIn = styled.div`
+const PasteIn = styled.textarea`
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.15) 0%,
@@ -175,11 +175,7 @@ const PasteIn = styled.div`
   color: white;
   height: 100px;
   resize: none;
-  &::placeholder {
-    text-align: center;
-    background-image: url("/AccountsRed.svg");
-    background-repeat: no-repeat;
-  }
+  padding: 10px;
 `;
 const NikeSNKRS = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -246,7 +242,7 @@ const NikeSNKRS = () => {
         style={{
           content: {
             background: "#232539",
-            height: "500px",
+            height: "530px",
             width: "700px",
             top: "50%",
             left: "50%",
@@ -294,18 +290,18 @@ const NikeSNKRS = () => {
                 <option value="US">United States</option>
               </Select>
             </section>
+          </div>
+          <div>
             <section>
-              <p>Drop Time</p>
-              <Select>
-                <option>03-04-2021</option>
-              </Select>
+              <p>Accounts</p>
+              <PasteIn placeholder="Paste in using email:password format."></PasteIn>
             </section>
           </div>
           <div>
-            <PasteIn contentEditable></PasteIn>
-          </div>
-          <div>
-            <PasteIn contentEditable></PasteIn>
+            <section>
+              <p>Proxies</p>
+              <PasteIn placeholder="Paste in using ip:port:username:password format."></PasteIn>
+            </section>
           </div>
           <div>
             <ClearFields>Clear Fields</ClearFields>

@@ -170,14 +170,7 @@ const GroupScripts = () => {
             display: "flex",
             gap: "10px",
           }}
-        >
-          <RightPlus>
-            <WhitePlus></WhitePlus>
-          </RightPlus>
-          <RightDots>
-            <Dots></Dots>
-          </RightDots>
-        </div>
+        ></div>
       </Header>
       <ScriptsContainer>
         <div>

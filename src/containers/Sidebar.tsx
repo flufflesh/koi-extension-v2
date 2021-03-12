@@ -159,7 +159,7 @@ const Sidebar = () => {
   return (
     <Wrapper>
       <div style={{ textAlign: "center", marginTop: 10, marginBottom: 10 }}>
-        <img src="/Logo Copy.png" height={100} width={69} />
+        <img src="/Logo Copy.png" height={100} width={69} alt="logo" />
       </div>
       <MenuWrapper>
         <StyledLink to="/profiles">
@@ -220,7 +220,10 @@ const Sidebar = () => {
               style={{ display: "flex", flexDirection: "column" }}
             >
               <div style={{ height: "100%", width: "100%" }}>
-                <img src="https://media.discordapp.net/attachments/531633243766784000/810238293206892544/145948869_1319883351710309_6007634537060611904_n.png?width=373&height=466" />
+                <img
+                  src="https://media.discordapp.net/attachments/531633243766784000/810238293206892544/145948869_1319883351710309_6007634537060611904_n.png?width=373&height=466"
+                  alt="discord"
+                />
                 <section style={{ width: "100%", paddingRight: 30 }}>
                   <section
                     style={{
@@ -278,7 +281,10 @@ const Sidebar = () => {
         </StyledDiv>
         <Account>
           <div>
-            <img src="https://media.discordapp.net/attachments/531633243766784000/810238293206892544/145948869_1319883351710309_6007634537060611904_n.png?width=373&height=466" />
+            <img
+              src="https://media.discordapp.net/attachments/531633243766784000/810238293206892544/145948869_1319883351710309_6007634537060611904_n.png?width=373&height=466"
+              alt="discord2"
+            />
             <section>
               <p style={{ color: "#fff", fontSize: 16 }}>Flufflés</p>
               <p

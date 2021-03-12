@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import {
-  TrashCan,
   Plus,
-  Mastercard,
-  VISA,
   WhitePlus,
   Dots,
-  Eye,
   Cross,
+  DownArrow,
+  UpArrow,
 } from "../components/Icons";
 import SelectedCard from "../components/SelectedCard";
 import Modal from "react-modal";
 import { Input, Save, WhichModal } from "../components/shared";
-import Slider from "../components/Slider";
+
 import toast, { Toaster } from "react-hot-toast";
-import { useDrag } from "react-dnd";
+
 import ProfileCards from "../components/ProfileCards";
 import Profile from "../components/Profile";
 
@@ -131,29 +129,6 @@ const Cards = styled.div`
   flex-direction: column;
   overflow-y: auto;
 `;
-const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  gap: 10px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.15) 0%,
-    rgba(255, 255, 255, 0.1) 99.8%
-  );
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15),
-    inset 0px 0px 3px rgba(0, 0, 0, 0.05);
-  border-radius: 20px;
-  &:last-of-type {
-    margin-bottom: 10px;
-  }
-`;
-const CardDetails = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-top: 30px;
-  gap: 20px;
-`;
 const Header = styled.div`
   display: flex;
   flex-direction: row;
@@ -179,6 +154,11 @@ const ProfileGroupsHeader = styled.div`
     justify-content: center;
     align-items: center;
     margin-left: auto;
+  }
+  & section {
+    margin-left: auto;
+    display: flex;
+    gap: 5px;
   }
 `;
 const ProfileGroupsMain = styled.div`
@@ -229,17 +209,6 @@ const Select = styled.select`
   & option {
     background: #2e2f48;
   }
-`;
-const DotContainer = styled.button`
-  border-radius: 100px;
-  border: none;
-  height: 35px;
-  width: 35px;
-  padding: 5px;
-  background: rgba(255, 255, 255, 0.1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 const ModalContent = styled.div`
   display: flex;
@@ -330,6 +299,15 @@ const Profiles = () => {
     setTimeout(() => {
       setIsSaving(false);
     }, 500);
+  };
+  const [activeProfile, setActiveProfile]: any = useState();
+  const setActive = (index: number) => {
+    setActiveProfile(index);
+    console.log(activeProfile);
+  };
+  const [currentlySelected, setCurrentlySelected]: any = useState();
+  const setSelected = (card: number) => {
+    setCurrentlySelected(card);
   };
   const onDrop = (item: any) => {};
   return (
@@ -446,8 +424,13 @@ const Profiles = () => {
           }}
         >
           <Select>
-            <option>hi</option>
-            <option>test2</option>
+            {exampleCards.map((item, index) => {
+              return (
+                <option key={index} selected={index === activeProfile}>
+                  {item.cardName}
+                </option>
+              );
+            })}
           </Select>
           <RightPlus onClick={openModal}>
             <WhitePlus></WhitePlus>
@@ -459,12 +442,24 @@ const Profiles = () => {
       </Header>
 
       <Container>
-        <ProfileGroups>
+        <ProfileGroups
+          onClick={() => {
+            setCurrentlySelected(null);
+          }}
+        >
           <ProfileGroupsHeader>
             <h5>Profile Groups</h5>
-            <div>
-              <Plus></Plus>
-            </div>
+            <section>
+              <div>
+                <DownArrow></DownArrow>
+              </div>
+              <div>
+                <UpArrow></UpArrow>
+              </div>
+              <div>
+                <Plus></Plus>
+              </div>
+            </section>
           </ProfileGroupsHeader>
           <ProfileGroupsMain>
             {profileGroupsExample.map((item, index) => {
@@ -487,16 +482,25 @@ const Profiles = () => {
           >
             {exampleCards.map((value, index) => {
               return (
-                <ProfileCards
-                  value={value}
-                  type={"profiles"}
-                  name={index}
-                  key={index}
-                  blur={true}
-                ></ProfileCards>
+                <>
+                  {index === currentlySelected ? (
+                    <SelectedCard
+                      setActive={setActive}
+                      id={index}
+                    ></SelectedCard>
+                  ) : (
+                    <ProfileCards
+                      value={value}
+                      type={"profiles"}
+                      name={index}
+                      key={index}
+                      blur={true}
+                      setSelected={setSelected}
+                    ></ProfileCards>
+                  )}
+                </>
               );
             })}
-            <SelectedCard></SelectedCard>
           </div>
           <h4 style={{ marginTop: 10 }}>Disabled Cards</h4>
           <div
@@ -506,6 +510,9 @@ const Profiles = () => {
               gap: 20,
               marginTop: 10,
               flexWrap: "wrap",
+            }}
+            onClick={() => {
+              setCurrentlySelected(null);
             }}
           >
             {disabledCards.map((value, index) => {

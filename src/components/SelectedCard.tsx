@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Slider from "./Slider";
 import { Arrow } from "./Icons";
@@ -78,20 +78,17 @@ const BlueButton = styled.button`
     outline: none;
   }
 `;
-const SelectedCard = () => {
+const SelectedCard = (props: any) => {
+  const setThisActive = () => {
+    props.setActive(props.id);
+  };
   return (
     <Card>
       <SelectedDetails>
-        <BoldText>Set as active Stripe profile</BoldText>
-        <Slider />
+        <BoldText>Set as active profile</BoldText>
+        <Slider setThisActive={setThisActive} id={props.id} />
       </SelectedDetails>
       <SelectedDetails>
-        <StyledDiv>
-          <BoldText style={{ fontSize: 12 }}>Shopify Mode</BoldText>
-          <Select>
-            <option>test</option>
-          </Select>
-        </StyledDiv>
         <StyledDiv>
           <BoldText style={{ fontSize: 12 }}>On Decline Use</BoldText>
           <Select></Select>

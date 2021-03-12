@@ -50,7 +50,13 @@ const ProfileCards = (props: any) => {
     [props.name, props.type]
   );
   return (
-    <Card ref={drag} style={{ backdropFilter: filter, opacity }}>
+    <Card
+      ref={drag}
+      style={{ backdropFilter: filter, opacity }}
+      onClick={() => {
+        if (props.type !== "") props?.setSelected(props.name);
+      }}
+    >
       <CardDetails style={{ marginTop: 0 }}>
         {props.value.type === "VISA" ? <VISA /> : <Mastercard />}
         <div style={{ marginLeft: "auto", display: "flex", gap: 5 }}>

@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import styled from "styled-components";
-import {
-  TrashCan,
-  DownArrow,
-  UpArrow,
-  Plus,
-  WhitePlus,
-  Dots,
-} from "../components/Icons";
+import { WhitePlus, Dots } from "../components/Icons";
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;

@@ -4,10 +4,10 @@
   "manifest_version": 2,
   "description": "Koi Extension",
   "icons": {
-    "512": "logo512.png"
+    "192": "koi-icon.png"
   },
   "browser_action": {
-    "default_icon": "logo512.png"
+    "default_icon": "koi-icon.png"
   },
   "background": {
     "scripts": ["script.js"],
