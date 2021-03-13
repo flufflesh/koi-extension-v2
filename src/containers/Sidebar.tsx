@@ -159,7 +159,7 @@ const Sidebar = () => {
   return (
     <Wrapper>
       <div style={{ textAlign: "center", marginTop: 10, marginBottom: 10 }}>
-        <img src="/Logo Copy.png" height={100} width={69} alt="logo" />
+        <img src="/KoiPNG2.png" height={110} width={68} alt="logo" />
       </div>
       <MenuWrapper>
         <StyledLink to="/profiles">

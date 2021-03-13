@@ -1,4 +1,5 @@
 import React from "react";
+import { Toaster } from "react-hot-toast";
 import styled from "styled-components";
 import { Dots, WhitePlus } from "../components/Icons";
 
@@ -159,6 +160,17 @@ const GroupScripts = () => {
   ];
   return (
     <Wrapper>
+      <Toaster
+        position="bottom-right"
+        toastOptions={{
+          style: {
+            background: "#292a47",
+            boxShadow:
+              "box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15), inset 0px 0px 3px rgba(0, 0, 0, 0.05)",
+            color: "white",
+          },
+        }}
+      />
       <Header>
         <h3 style={{ color: "#fff", fontSize: 34, fontWeight: 700 }}>
           Bot/Group Scripts

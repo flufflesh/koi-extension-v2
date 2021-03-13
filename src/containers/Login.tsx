@@ -40,6 +40,9 @@ const Wrapper = styled.div`
       align-items: center;
     }
   }
+  & img {
+    width: 200px;
+  }
   & h3 {
     color: white;
   }
@@ -68,7 +71,7 @@ const Login = () => {
     <div>
       <Wrapper>
         <div>
-          <img src="text.png" />
+          <img src="KoiPNG.png" alt="login logo" />
           {/* <h3 style={{ color: "rgba(255,255,255,0.8)" }}>Login</h3> */}
           <button>
             <a style={{ height: "100%", width: "100%" }} onClick={login}>
@@ -104,7 +107,7 @@ const Login = () => {
             {loginFailed === null ? (
               <></>
             ) : (
-              <p style={{ color: "white" }}>{loginFailed}</p>
+              <p style={{ color: "#FF5665" }}>{loginFailed}</p>
             )}
           </section>
         </div>
