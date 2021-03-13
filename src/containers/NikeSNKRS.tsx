@@ -176,6 +176,9 @@ const PasteIn = styled.textarea`
   height: 100px;
   resize: none;
   padding: 10px;
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
 `;
 const NikeSNKRS = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
