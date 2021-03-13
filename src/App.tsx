@@ -19,6 +19,7 @@ import Accounts from "./containers/Accounts";
 import StoreScripts from "./containers/StoreScripts";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const MainRoutes = styled.div`
   display: flex;

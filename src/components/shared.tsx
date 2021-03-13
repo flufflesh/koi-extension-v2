@@ -206,7 +206,9 @@ export const WhichModal = ({
             alignItems: "center",
           }}
         >
-          <p style={{ color: "#fff" }}>
+          <p
+            style={{ color: shippingSame ? "white" : "rgba(255,255,255,0.6)" }}
+          >
             Shipping address same as billing address
           </p>
           <Switch

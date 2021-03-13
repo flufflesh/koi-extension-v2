@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { DiscordWithWordmark } from "../components/Icons";
+import { useHistory } from "react-router-dom";
+import Loader from "react-loader-spinner";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -29,6 +31,7 @@ const Wrapper = styled.div`
     font-size: 16px;
     & a {
       color: #fff;
+      cursor: pointer;
       text-decoration: none;
       display: flex;
       flex-direction: row;
@@ -43,17 +46,67 @@ const Wrapper = styled.div`
 `;
 
 const Login = () => {
+  const history = useHistory();
+  const [loggingIn, setLoggingIn] = useState(false);
+  const [loginFailed, setLoginFailed]: any = useState(null);
+  const login = () => {
+    setLoggingIn(true);
+    setLoginFailed(null);
+    setTimeout(() => {
+      const number = Math.floor(Math.random() * 11);
+      console.log(number);
+      if (number > 7) {
+        setLoginFailed("Key in use/Inactive");
+        setLoggingIn(false);
+      } else {
+        setLoggingIn(false);
+        history.push("/profiles");
+      }
+    }, 2000);
+  };
   return (
     <div>
       <Wrapper>
         <div>
-          <img src="koi-icon.png" />
-          <h3>Login</h3>
+          <img src="text.png" />
+          {/* <h3 style={{ color: "rgba(255,255,255,0.8)" }}>Login</h3> */}
           <button>
-            <Link to="/profiles" style={{ height: "100%", width: "100%" }}>
+            <a style={{ height: "100%", width: "100%" }} onClick={login}>
               Login with <DiscordWithWordmark></DiscordWithWordmark>
-            </Link>
+            </a>
           </button>
+          <section
+            style={{
+              height: 20,
+              textAlign: "center",
+            }}
+          >
+            {loggingIn ? (
+              <section
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <p style={{ color: "white" }}>Logging in...</p>
+                <Loader
+                  type="ThreeDots"
+                  color="#f1f1f1"
+                  height={30}
+                  width={30}
+                  timeout={2000}
+                ></Loader>
+              </section>
+            ) : (
+              <></>
+            )}{" "}
+            {loginFailed === null ? (
+              <></>
+            ) : (
+              <p style={{ color: "white" }}>{loginFailed}</p>
+            )}
+          </section>
         </div>
       </Wrapper>
     </div>

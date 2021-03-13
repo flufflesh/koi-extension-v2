@@ -89,7 +89,9 @@ const SelectedCard = (props: any) => {
   return (
     <Card>
       <SelectedDetails>
-        <BoldText>Set as active profile</BoldText>
+        <BoldText style={{ color: checked ? "#fff" : "rgba(255,255,255,0.6)" }}>
+          Set as active profile
+        </BoldText>
         <Switch
           defaultChecked={checked}
           aria-labelledby="activeCard"

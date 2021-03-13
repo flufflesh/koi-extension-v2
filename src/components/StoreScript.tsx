@@ -116,14 +116,26 @@ const StoreScript = (props: any) => {
       <FlexContainer>
         <section>
           <div>
-            <p>Autofill</p>
+            <p
+              style={{
+                color: autofillChecked ? "white" : "rgba(255,255,255,0.6)",
+              }}
+            >
+              Autofill
+            </p>
             <Switch
               defaultChecked={autofillChecked}
               onChange={checkAutofill}
             ></Switch>
           </div>
           <div>
-            <p>ACO</p>
+            <p
+              style={{
+                color: acoChecked ? "white" : "rgba(255,255,255,0.6)",
+              }}
+            >
+              ACO
+            </p>
             <Switch defaultChecked={acoChecked} onChange={checkAco}></Switch>
           </div>
         </section>
@@ -155,7 +167,13 @@ const StoreScript = (props: any) => {
         </section>
         <section>
           <div>
-            <p>Automatic Login</p>
+            <p
+              style={{
+                color: autoLoginChecked ? "white" : "rgba(255,255,255,0.6)",
+              }}
+            >
+              Automatic Login
+            </p>
             <Switch
               defaultChecked={autoLoginChecked}
               onChange={checkAutoLogin}

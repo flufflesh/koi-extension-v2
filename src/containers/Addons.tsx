@@ -116,7 +116,7 @@ const ScriptsAddon = styled.div`
 `;
 const CheckboxDiv = styled.div`
   & .switch ~ label {
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.6);
   }
 `;
 const Input = styled.input`
@@ -164,7 +164,7 @@ const GreenButton = styled.button`
   color: white;
 `;
 const opacity = {
-  color: "rgba(255, 255, 255, 0.3)",
+  color: "rgba(255,255,255,0.6)",
 };
 const Addons = () => {
   const [collapseOne, setCollapseOne] = useState(false);
@@ -417,7 +417,7 @@ const Addons = () => {
                     style={{
                       fontWeight: 700,
                       fontSize: 14,
-                      color: shopifyFeed ? "white" : "rgba(255, 255, 255, 0.3)",
+                      color: shopifyFeed ? "white" : "rgba(255,255,255,0.6)",
                     }}
                   >
                     Enable Shopify Feed
@@ -505,7 +505,7 @@ const Addons = () => {
                       style={{
                         color: shopifyCheckboxes.autocart
                           ? "white"
-                          : "rgba(255, 255, 255, 0.3)",
+                          : "rgba(255,255,255,0.6)",
                       }}
                     >
                       Autocart
@@ -537,7 +537,7 @@ const Addons = () => {
                       style={{
                         color: shopifyCheckboxes.skipCart
                           ? "white"
-                          : "rgba(255, 255, 255, 0.3)",
+                          : "rgba(255,255,255,0.6)",
                       }}
                     >
                       Skip Cart
@@ -570,7 +570,7 @@ const Addons = () => {
                     style={{
                       color: shopifyCheckboxes.productFast
                         ? "white"
-                        : "rgba(255, 255, 255, 0.3)",
+                        : "rgba(255,255,255,0.6)",
                     }}
                   >
                     Product Page Fast Mode
@@ -602,7 +602,7 @@ const Addons = () => {
                     style={{
                       color: shopifyCheckboxes.billingFast
                         ? "white"
-                        : "rgba(255, 255, 255, 0.3)",
+                        : "rgba(255,255,255,0.6)",
                     }}
                   >
                     Billing Page Fast Mode
@@ -642,7 +642,7 @@ const Addons = () => {
                       style={{
                         color: shopifyCheckboxes.couponMode
                           ? "white"
-                          : "rgba(255, 255, 255, 0.3)",
+                          : "rgba(255,255,255,0.6)",
                       }}
                     >
                       Coupon Mode
@@ -674,7 +674,7 @@ const Addons = () => {
                       style={{
                         color: shopifyCheckboxes.paypalMode
                           ? "white"
-                          : "rgba(255, 255, 255, 0.3)",
+                          : "rgba(255,255,255,0.6)",
                       }}
                     >
                       Paypal Mode
@@ -785,7 +785,7 @@ const Addons = () => {
                   <span
                     style={{
                       fontWeight: 700,
-                      color: tlDashboard ? "white" : "rgba(255, 255, 255, 0.3)",
+                      color: tlDashboard ? "white" : "rgba(255, 255, 255, 0.5)",
                     }}
                   >
                     Enable TL Dashboard Script Mode
