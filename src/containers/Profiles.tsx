@@ -309,6 +309,7 @@ const Profiles = () => {
   const setSelected = (card: number) => {
     setCurrentlySelected(card);
   };
+  const [shippingSame, setShippingSame] = useState(false);
   const onDrop = (item: any) => {};
   return (
     <Wrapper>
@@ -407,6 +408,8 @@ const Profiles = () => {
             modalName={modalName}
             setModalName={setModalName}
             save={save}
+            shippingSame={shippingSame}
+            setShippingSame={setShippingSame}
           ></WhichModal>
         </ModalContent>
       </Modal>

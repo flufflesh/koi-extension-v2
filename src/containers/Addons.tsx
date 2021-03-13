@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Arrow } from "../components/Icons";
+import { Switch } from "../components/shared";
 import Slider from "../components/Slider";
 const Wrapper = styled.div`
   display: flex;
@@ -162,6 +163,9 @@ const GreenButton = styled.button`
   font-weight: 700;
   color: white;
 `;
+const opacity = {
+  color: "rgba(255, 255, 255, 0.3)",
+};
 const Addons = () => {
   const [collapseOne, setCollapseOne] = useState(false);
   const [collapseTwo, setCollapseTwo] = useState(false);
@@ -172,6 +176,16 @@ const Addons = () => {
       setCollapseOne(true);
     }
   };
+  const [shopifyFeed, setShopifyFeed] = useState(false);
+  const [shopifyCheckboxes, setShopifyCheckboxes] = useState({
+    autocart: false,
+    skipCart: false,
+    productFast: false,
+    billingFast: false,
+    couponMode: false,
+    paypalMode: false,
+  });
+  const [tlDashboard, setTlDashboard] = useState(false);
   const collapseSecond = () => {
     if (collapseTwo) {
       setCollapseTwo(false);
@@ -399,10 +413,23 @@ const Addons = () => {
                     alignItems: "center",
                   }}
                 >
-                  <h4 style={{ fontWeight: 700, fontSize: 14 }}>
+                  <h4
+                    style={{
+                      fontWeight: 700,
+                      fontSize: 14,
+                      color: shopifyFeed ? "white" : "rgba(255, 255, 255, 0.3)",
+                    }}
+                  >
                     Enable Shopify Feed
                   </h4>
-                  <Slider></Slider>
+                  <Switch
+                    defaultChecked={shopifyFeed}
+                    onChange={() => {
+                      shopifyFeed
+                        ? setShopifyFeed(false)
+                        : setShopifyFeed(true);
+                    }}
+                  ></Switch>
                 </div>
               </GeneralAddon>
             </AddonsMain>
@@ -460,8 +487,29 @@ const Addons = () => {
                       flexDirection: "row-reverse",
                     }}
                   >
-                    <Slider></Slider>
-                    <span>Autocart</span>
+                    <Switch
+                      defaultChecked={shopifyCheckboxes.autocart}
+                      onChange={() => {
+                        shopifyCheckboxes.autocart
+                          ? setShopifyCheckboxes({
+                              ...shopifyCheckboxes,
+                              autocart: false,
+                            })
+                          : setShopifyCheckboxes({
+                              ...shopifyCheckboxes,
+                              autocart: true,
+                            });
+                      }}
+                    ></Switch>
+                    <span
+                      style={{
+                        color: shopifyCheckboxes.autocart
+                          ? "white"
+                          : "rgba(255, 255, 255, 0.3)",
+                      }}
+                    >
+                      Autocart
+                    </span>
                   </section>
                   <section
                     style={{
@@ -471,35 +519,100 @@ const Addons = () => {
                       flexDirection: "row-reverse",
                     }}
                   >
-                    <Slider></Slider>
-                    <span>Skip Cart</span>
+                    <Switch
+                      defaultChecked={shopifyCheckboxes.skipCart}
+                      onChange={() => {
+                        shopifyCheckboxes.skipCart
+                          ? setShopifyCheckboxes({
+                              ...shopifyCheckboxes,
+                              skipCart: false,
+                            })
+                          : setShopifyCheckboxes({
+                              ...shopifyCheckboxes,
+                              skipCart: true,
+                            });
+                      }}
+                    ></Switch>
+                    <span
+                      style={{
+                        color: shopifyCheckboxes.skipCart
+                          ? "white"
+                          : "rgba(255, 255, 255, 0.3)",
+                      }}
+                    >
+                      Skip Cart
+                    </span>
                   </section>
                 </div>
                 <section
                   style={{
                     display: "flex",
                     flexDirection: "row-reverse",
-
+                    marginTop: 5,
                     alignItems: "center",
                   }}
                 >
-                  <Slider></Slider>
-                  <span>Product Page Fast Mode</span>
+                  <Switch
+                    defaultChecked={shopifyCheckboxes.productFast}
+                    onChange={() => {
+                      shopifyCheckboxes.productFast
+                        ? setShopifyCheckboxes({
+                            ...shopifyCheckboxes,
+                            productFast: false,
+                          })
+                        : setShopifyCheckboxes({
+                            ...shopifyCheckboxes,
+                            productFast: true,
+                          });
+                    }}
+                  ></Switch>
+                  <span
+                    style={{
+                      color: shopifyCheckboxes.productFast
+                        ? "white"
+                        : "rgba(255, 255, 255, 0.3)",
+                    }}
+                  >
+                    Product Page Fast Mode
+                  </span>
                 </section>
                 <section
                   style={{
                     display: "flex",
                     alignItems: "center",
+                    marginTop: 5,
                     flexDirection: "row-reverse",
                   }}
                 >
-                  <Slider></Slider>
-                  <span>Billing Page Fast Mode</span>
+                  <Switch
+                    defaultChecked={shopifyCheckboxes.billingFast}
+                    onChange={() => {
+                      shopifyCheckboxes.billingFast
+                        ? setShopifyCheckboxes({
+                            ...shopifyCheckboxes,
+                            billingFast: false,
+                          })
+                        : setShopifyCheckboxes({
+                            ...shopifyCheckboxes,
+                            billingFast: true,
+                          });
+                    }}
+                  ></Switch>
+                  <span
+                    style={{
+                      color: shopifyCheckboxes.billingFast
+                        ? "white"
+                        : "rgba(255, 255, 255, 0.3)",
+                    }}
+                  >
+                    Billing Page Fast Mode
+                  </span>
                 </section>
                 <section
                   style={{
                     display: "flex",
                     flexDirection: "row",
+                    marginTop: 5,
                     gap: 10,
                   }}
                 >
@@ -511,8 +624,29 @@ const Addons = () => {
                       flexDirection: "row-reverse",
                     }}
                   >
-                    <Slider></Slider>
-                    <label>Coupon Mode</label>
+                    <Switch
+                      defaultChecked={shopifyCheckboxes.couponMode}
+                      onChange={() => {
+                        shopifyCheckboxes.couponMode
+                          ? setShopifyCheckboxes({
+                              ...shopifyCheckboxes,
+                              couponMode: false,
+                            })
+                          : setShopifyCheckboxes({
+                              ...shopifyCheckboxes,
+                              couponMode: true,
+                            });
+                      }}
+                    ></Switch>
+                    <label
+                      style={{
+                        color: shopifyCheckboxes.couponMode
+                          ? "white"
+                          : "rgba(255, 255, 255, 0.3)",
+                      }}
+                    >
+                      Coupon Mode
+                    </label>
                   </CheckboxDiv>
                   <CheckboxDiv
                     style={{
@@ -522,8 +656,29 @@ const Addons = () => {
                       flexDirection: "row-reverse",
                     }}
                   >
-                    <Slider></Slider>
-                    <label>Paypal Mode</label>
+                    <Switch
+                      defaultChecked={shopifyCheckboxes.paypalMode}
+                      onChange={() => {
+                        shopifyCheckboxes.paypalMode
+                          ? setShopifyCheckboxes({
+                              ...shopifyCheckboxes,
+                              paypalMode: false,
+                            })
+                          : setShopifyCheckboxes({
+                              ...shopifyCheckboxes,
+                              paypalMode: true,
+                            });
+                      }}
+                    ></Switch>
+                    <label
+                      style={{
+                        color: shopifyCheckboxes.paypalMode
+                          ? "white"
+                          : "rgba(255, 255, 255, 0.3)",
+                      }}
+                    >
+                      Paypal Mode
+                    </label>
                   </CheckboxDiv>
                 </section>
               </ScriptsAddon>
@@ -627,10 +782,22 @@ const Addons = () => {
                     alignItems: "center",
                   }}
                 >
-                  <span style={{ fontWeight: 700 }}>
+                  <span
+                    style={{
+                      fontWeight: 700,
+                      color: tlDashboard ? "white" : "rgba(255, 255, 255, 0.3)",
+                    }}
+                  >
                     Enable TL Dashboard Script Mode
                   </span>
-                  <Slider></Slider>
+                  <Switch
+                    defaultChecked={tlDashboard}
+                    onChange={() => {
+                      tlDashboard
+                        ? setTlDashboard(false)
+                        : setTlDashboard(true);
+                    }}
+                  ></Switch>
                 </div>
               </ScriptsAddon>
             </AddonsMain>

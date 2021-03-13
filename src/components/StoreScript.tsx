@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { Switch } from "./shared";
 import Slider from "./Slider";
 
 const Container = styled.div`
@@ -49,6 +50,10 @@ const FlexContainer = styled.div`
       justify-content: center;
       align-items: center;
     }
+    & div.react-toggle {
+      flex: 0;
+      margin-left: auto;
+    }
   }
 `;
 const Select = styled.select`
@@ -93,6 +98,18 @@ const Input = styled.input`
   outline: none;
 `;
 const StoreScript = (props: any) => {
+  const [autofillChecked, setAutofillChecked] = useState(false);
+  const checkAutofill = () => {
+    autofillChecked ? setAutofillChecked(false) : setAutofillChecked(true);
+  };
+  const [acoChecked, setAcoChecked] = useState(false);
+  const checkAco = () => {
+    acoChecked ? setAcoChecked(false) : setAcoChecked(true);
+  };
+  const [autoLoginChecked, setAutoLoginChecked] = useState(false);
+  const checkAutoLogin = () => {
+    autoLoginChecked ? setAutoLoginChecked(false) : setAutoLoginChecked(true);
+  };
   return (
     <Container>
       <Image src={props.image} />
@@ -100,11 +117,14 @@ const StoreScript = (props: any) => {
         <section>
           <div>
             <p>Autofill</p>
-            <Slider />
+            <Switch
+              defaultChecked={autofillChecked}
+              onChange={checkAutofill}
+            ></Switch>
           </div>
           <div>
             <p>ACO</p>
-            <Slider />
+            <Switch defaultChecked={acoChecked} onChange={checkAco}></Switch>
           </div>
         </section>
         <section>
@@ -136,7 +156,10 @@ const StoreScript = (props: any) => {
         <section>
           <div>
             <p>Automatic Login</p>
-            <Slider />
+            <Switch
+              defaultChecked={autoLoginChecked}
+              onChange={checkAutoLogin}
+            ></Switch>
           </div>
         </section>
       </FlexContainer>

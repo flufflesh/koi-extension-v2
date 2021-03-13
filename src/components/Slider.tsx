@@ -13,7 +13,9 @@ const Slider = (props: any) => {
             setChecked(false);
           } else {
             setChecked(true);
-            props.setThisActive(props.id);
+            if (props.id) {
+              props.setThisActive(props.id);
+            }
           }
         }}
       />

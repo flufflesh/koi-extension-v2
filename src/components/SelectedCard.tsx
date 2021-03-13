@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Slider from "./Slider";
 import { Arrow } from "./Icons";
+import { Switch } from "./shared";
 
 const Card = styled.div`
   display: flex;
@@ -79,14 +80,21 @@ const BlueButton = styled.button`
   }
 `;
 const SelectedCard = (props: any) => {
+  const [checked, setChecked] = useState(false);
+
   const setThisActive = () => {
+    checked ? setChecked(false) : setChecked(true);
     props.setActive(props.id);
   };
   return (
     <Card>
       <SelectedDetails>
         <BoldText>Set as active profile</BoldText>
-        <Slider setThisActive={setThisActive} id={props.id} />
+        <Switch
+          defaultChecked={checked}
+          aria-labelledby="activeCard"
+          onChange={setThisActive}
+        ></Switch>
       </SelectedDetails>
       <SelectedDetails>
         <StyledDiv>

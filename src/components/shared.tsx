@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Slider from "./Slider";
+import Toggle from "react-toggle";
 
 export const Input = styled.input`
   background: linear-gradient(
@@ -68,7 +69,13 @@ export const BlueButton = styled.button`
   flex: 1;
 `;
 
-export const WhichModal = ({ modalName, setModalName, save }: any) => {
+export const WhichModal = ({
+  modalName,
+  setModalName,
+  save,
+  shippingSame,
+  setShippingSame,
+}: any) => {
   if (modalName === "General") {
     return (
       <React.Fragment>
@@ -202,7 +209,12 @@ export const WhichModal = ({ modalName, setModalName, save }: any) => {
           <p style={{ color: "#fff" }}>
             Shipping address same as billing address
           </p>
-          <Slider></Slider>
+          <Switch
+            defaultChecked={shippingSame}
+            onChange={() => {
+              shippingSame ? setShippingSame(false) : setShippingSame(true);
+            }}
+          ></Switch>
         </div>
         <div style={{ marginTop: 4 }}>
           <Save
@@ -246,3 +258,8 @@ export const WhichModal = ({ modalName, setModalName, save }: any) => {
     return <></>;
   }
 };
+export const Switch = styled(Toggle).attrs({ icons: false })`
+  &.react-toggle--checked .react-toggle-track {
+    background: linear-gradient(180deg, #ff5665 1.55%, #e23342 96.94%);
+  }
+`;
