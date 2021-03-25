@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Slider from "./Slider";
-import { Arrow } from "./Icons";
 import { Switch } from "./shared";
 
 const Card = styled.div`
