@@ -10,19 +10,13 @@ import {
 } from "../components/Icons";
 import SelectedCard from "../components/SelectedCard";
 import Modal from "react-modal";
-import { Input, Save, WhichModal } from "../components/shared";
+import { WhichModal, Wrapper, Header } from "../components/shared";
 
 import toast, { Toaster } from "react-hot-toast";
 
 import ProfileCards from "../components/ProfileCards";
 import Profile from "../components/Profile";
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-top: 40px;
-  width: 100%;
-`;
 const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -31,90 +25,7 @@ const Container = styled.div`
   overflow: auto;
   margin-bottom: 25px;
 `;
-const profileGroupsExample = [
-  { name: "Profile Group Title", card: "test" },
-  { name: "Profile Group Title", card: "test" },
-  { name: "Profile Group Title", card: "test" },
-  { name: "Profile Group Title", card: "test" },
-  { name: "Profile Group Title", card: "test" },
-  { name: "Profile Group Title", card: "test" },
-  { name: "Profile Group Title", card: "test" },
-  { name: "Profile Group Title", card: "test" },
-  { name: "Profile Group Title", card: "test" },
-  { name: "Profile Group Title", card: "test" },
-  { name: "Profile Group Title", card: "test" },
-  { name: "Profile Group Title", card: "test" },
-  { name: "Profile Group Title", card: "test" },
-  { name: "Profile Group Title", card: "test" },
-  { name: "Profile Group Title", card: "test" },
-  { name: "Profile Group Title", card: "test" },
-  { name: "Profile Group Title", card: "test" },
-  { name: "Profile Group Title", card: "test" },
-  { name: "Profile Group Title", card: "test" },
-  { name: "Profile Group Title", card: "test" },
-  { name: "Profile Group Title", card: "test" },
-  { name: "Profile Group Title", card: "test" },
-  { name: "Profile Group Title", card: "test" },
-];
-const exampleCards = [
-  {
-    cardName: "sanol",
-    cardNumber: "1234 5678 9012 1234",
-    cvv: "123",
-    expiration: "01/23",
-    type: "VISA",
-  },
-  {
-    cardName: "nanol",
 
-    cardNumber: "1234 5678 9012 1234",
-    cvv: "123",
-    expiration: "01/23",
-    type: "Mastercard",
-  },
-  {
-    cardName: "ganol",
-
-    cardNumber: "1234 5678 9012 1234",
-    cvv: "123",
-    expiration: "01/23",
-    type: "Mastercard",
-  },
-  {
-    cardName: "lanol",
-
-    cardNumber: "1234 5678 9012 1234",
-    cvv: "123",
-    expiration: "01/23",
-    type: "Mastercard",
-  },
-];
-const disabledCards = [
-  {
-    cardNumber: "1234 5678 9012 1234",
-    cvv: "123",
-    expiration: "01/23",
-    type: "VISA",
-  },
-  {
-    cardNumber: "1234 5678 9012 1234",
-    cvv: "123",
-    expiration: "01/23",
-    type: "Mastercard",
-  },
-  {
-    cardNumber: "1234 5678 9012 1234",
-    cvv: "123",
-    expiration: "01/23",
-    type: "Mastercard",
-  },
-  {
-    cardNumber: "1234 5678 9012 1234",
-    cvv: "123",
-    expiration: "01/23",
-    type: "Mastercard",
-  },
-];
 const ProfileGroups = styled.div`
   display: flex;
   flex-direction: column;
@@ -129,10 +40,7 @@ const Cards = styled.div`
   flex-direction: column;
   overflow-y: auto;
 `;
-const Header = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
+
 const ProfileGroupsHeader = styled.div`
   background-color: rgba(255, 255, 255, 0.1);
   padding: 12px 9.5px;
@@ -258,12 +166,98 @@ const ModalNavButton = styled.div`
     color: #fff;
   }
 `;
-const Profiles = () => {
-  const accountsExample: any[] = Array(30).fill("123");
 
+const profileGroupsExample = [
+  { name: "Profile Group Title", card: "test" },
+  { name: "Profile Group Title", card: "test" },
+  { name: "Profile Group Title", card: "test" },
+  { name: "Profile Group Title", card: "test" },
+  { name: "Profile Group Title", card: "test" },
+  { name: "Profile Group Title", card: "test" },
+  { name: "Profile Group Title", card: "test" },
+  { name: "Profile Group Title", card: "test" },
+  { name: "Profile Group Title", card: "test" },
+  { name: "Profile Group Title", card: "test" },
+  { name: "Profile Group Title", card: "test" },
+  { name: "Profile Group Title", card: "test" },
+  { name: "Profile Group Title", card: "test" },
+  { name: "Profile Group Title", card: "test" },
+  { name: "Profile Group Title", card: "test" },
+  { name: "Profile Group Title", card: "test" },
+  { name: "Profile Group Title", card: "test" },
+  { name: "Profile Group Title", card: "test" },
+  { name: "Profile Group Title", card: "test" },
+  { name: "Profile Group Title", card: "test" },
+  { name: "Profile Group Title", card: "test" },
+  { name: "Profile Group Title", card: "test" },
+  { name: "Profile Group Title", card: "test" },
+];
+const exampleCards = [
+  {
+    cardName: "sanol",
+    cardNumber: "1234 5678 9012 1234",
+    cvv: "123",
+    expiration: "01/23",
+    type: "VISA",
+  },
+  {
+    cardName: "nanol",
+
+    cardNumber: "1234 5678 9012 1234",
+    cvv: "123",
+    expiration: "01/23",
+    type: "Mastercard",
+  },
+  {
+    cardName: "ganol",
+
+    cardNumber: "1234 5678 9012 1234",
+    cvv: "123",
+    expiration: "01/23",
+    type: "Mastercard",
+  },
+  {
+    cardName: "lanol",
+
+    cardNumber: "1234 5678 9012 1234",
+    cvv: "123",
+    expiration: "01/23",
+    type: "Mastercard",
+  },
+];
+const disabledCards = [
+  {
+    cardNumber: "1234 5678 9012 1234",
+    cvv: "123",
+    expiration: "01/23",
+    type: "VISA",
+  },
+  {
+    cardNumber: "1234 5678 9012 1234",
+    cvv: "123",
+    expiration: "01/23",
+    type: "Mastercard",
+  },
+  {
+    cardNumber: "1234 5678 9012 1234",
+    cvv: "123",
+    expiration: "01/23",
+    type: "Mastercard",
+  },
+  {
+    cardNumber: "1234 5678 9012 1234",
+    cvv: "123",
+    expiration: "01/23",
+    type: "Mastercard",
+  },
+];
+
+const Profiles = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [modalName, setModalName] = useState("General");
+
+  // For the modal go to shared.tsx
   const openModal = () => {
     setIsOpen(true);
   };

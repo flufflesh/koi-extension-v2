@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Cross, Dots, Eye, TrashCan, WhitePlus } from "../components/Icons";
 import Modal from "react-modal";
-import { ClearFields, Input, Save } from "../components/shared";
+import {
+  ClearFields,
+  Input,
+  Save,
+  Header,
+  Wrapper,
+} from "../components/shared";
 import toast, { Toaster } from "react-hot-toast";
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-top: 40px;
-  width: 100%;
-`;
 const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -19,10 +19,7 @@ const Container = styled.div`
   overflow: auto;
   margin-bottom: 25px;
 `;
-const Header = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
+
 const RightPlus = styled.div`
   background: linear-gradient(180deg, #00da0d 0%, #00b20b 100%);
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.35);
@@ -142,12 +139,14 @@ const ModalContent = styled.div`
 const Accounts = () => {
   const accountsExample: any[] = Array(30).fill("123");
   const [modalIsOpen, setIsOpen] = useState(false);
+
   const openModal = () => {
     setIsOpen(true);
   };
   const closeModal = () => {
     setIsOpen(false);
   };
+
   const save = () => {
     toast((t) => {
       return (
@@ -178,6 +177,7 @@ const Accounts = () => {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+
   return (
     <Wrapper>
       <Toaster

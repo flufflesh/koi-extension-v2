@@ -1,29 +1,17 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import {
-  TrashCan,
-  DownArrow,
-  UpArrow,
-  Plus,
-  WhitePlus,
-  Dots,
-  Play,
-  Cross,
-} from "../components/Icons";
+import { TrashCan, WhitePlus, Dots, Play, Cross } from "../components/Icons";
 import Modal from "react-modal";
-import { ClearFields, Input, Save, Select } from "../components/shared";
+import {
+  ClearFields,
+  Input,
+  Save,
+  Select,
+  Wrapper,
+  Header,
+} from "../components/shared";
 import toast, { Toaster } from "react-hot-toast";
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-top: 40px;
-  width: 100%;
-`;
-const Header = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
 const RightPlus = styled.button`
   border: none;
   background: linear-gradient(180deg, #00da0d 0%, #00b20b 100%);

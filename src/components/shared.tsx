@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Slider from "./Slider";
 import Toggle from "react-toggle";
 
 export const Input = styled.input`
@@ -264,4 +263,14 @@ export const Switch = styled(Toggle).attrs({ icons: false })`
   &.react-toggle--checked .react-toggle-track {
     background: linear-gradient(180deg, #ff5665 1.55%, #e23342 96.94%);
   }
+`;
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
+  width: 100%;
+`;
+export const Header = styled.div`
+  display: flex;
+  flex-direction: row;
 `;

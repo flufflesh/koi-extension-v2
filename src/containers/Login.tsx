@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { DiscordWithWordmark } from "../components/Icons";
 import { useHistory } from "react-router-dom";
 import Loader from "react-loader-spinner";

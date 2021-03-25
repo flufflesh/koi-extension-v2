@@ -2,16 +2,8 @@ import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import styled from "styled-components";
 import { WhitePlus, Dots } from "../components/Icons";
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-top: 40px;
-  width: 100%;
-`;
-const Header = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
+import { Wrapper, Header } from "../components/shared";
+
 const RightPlus = styled.button`
   border: none;
   background: linear-gradient(180deg, #00da0d 0%, #00b20b 100%);

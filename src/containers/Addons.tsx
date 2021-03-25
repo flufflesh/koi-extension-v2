@@ -2,18 +2,7 @@ import React, { useState } from "react";
 import { Toaster } from "react-hot-toast";
 import styled from "styled-components";
 import { Arrow } from "../components/Icons";
-import { Switch } from "../components/shared";
-import Slider from "../components/Slider";
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-top: 40px;
-  width: 100%;
-`;
-const Header = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
+import { Switch, Header, Wrapper } from "../components/shared";
 
 const Container = styled.div`
   margin-top: 20px;
@@ -164,9 +153,7 @@ const GreenButton = styled.button`
   font-weight: 700;
   color: white;
 `;
-const opacity = {
-  color: "rgba(255,255,255,0.6)",
-};
+
 const Addons = () => {
   const [collapseOne, setCollapseOne] = useState(false);
   const [collapseTwo, setCollapseTwo] = useState(false);

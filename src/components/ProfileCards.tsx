@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDrag } from "react-dnd";
 import styled from "styled-components";
 import { Eye, Dots, Mastercard, VISA } from "./Icons";
@@ -37,7 +37,17 @@ const CardDetails = styled.div`
   margin-top: 30px;
   gap: 20px;
 `;
+
 const ProfileCards = (props: any) => {
+  const [blur, setBlur] = useState(false);
+
+  const setBlurCurrent = () => {
+    if (!blur) {
+      setBlur(true);
+    } else {
+      setBlur(false);
+    }
+  };
   const [{ filter, opacity }, drag] = useDrag(
     () => ({
       type: props.type,
@@ -49,12 +59,13 @@ const ProfileCards = (props: any) => {
     }),
     [props.name, props.type]
   );
+
   return (
     <Card ref={drag} style={{ backdropFilter: filter, opacity }}>
       <CardDetails style={{ marginTop: 0 }}>
         {props.value.type === "VISA" ? <VISA /> : <Mastercard />}
         <div style={{ marginLeft: "auto", display: "flex", gap: 5 }}>
-          <DotContainer>
+          <DotContainer onClick={setBlurCurrent}>
             <Eye></Eye>
           </DotContainer>
           <DotContainer
@@ -72,7 +83,7 @@ const ProfileCards = (props: any) => {
             fontSize: 20,
             fontWeight: 700,
             marginRight: 50,
-            filter: props.blur ? "blur(0.5rem)" : "",
+            filter: blur ? "blur(0.5rem)" : "",
           }}
         >
           {props.value.cardNumber}

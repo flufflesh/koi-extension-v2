@@ -2,16 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import styled from "styled-components";
 import StoreScript from "../components/StoreScript";
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-top: 40px;
-  width: 100%;
-`;
-const Header = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
+import { Header, Wrapper } from "../components/shared";
 
 const ScriptsContainer = styled.div`
   margin-top: 20px;

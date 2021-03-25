@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Switch } from "./shared";
-import Slider from "./Slider";
 
 const Container = styled.div`
   background: linear-gradient(

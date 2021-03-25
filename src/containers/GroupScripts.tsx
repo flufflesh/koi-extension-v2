@@ -1,49 +1,8 @@
 import React from "react";
 import { Toaster } from "react-hot-toast";
 import styled from "styled-components";
-import { Dots, WhitePlus } from "../components/Icons";
+import { Header, Wrapper } from "../components/shared";
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-top: 40px;
-  width: 100%;
-`;
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-top: 20px;
-  color: white;
-  overflow: auto;
-  margin-bottom: 25px;
-`;
-const Header = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-const RightPlus = styled.button`
-  border: none;
-
-  background: linear-gradient(180deg, #00da0d 0%, #00b20b 100%);
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.35);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  height: 35px;
-  width: 33px;
-`;
-const RightDots = styled.button`
-  border: none;
-  background: linear-gradient(180deg, #767eff 1.55%, #4b52d3 96.94%);
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.35);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  height: 35px;
-  width: 33px;
-`;
 const ScriptsContainer = styled.div`
   margin-top: 20px;
   width: 100%;

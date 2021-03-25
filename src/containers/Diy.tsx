@@ -10,15 +10,16 @@ import {
   Cross,
 } from "../components/Icons";
 import Modal from "react-modal";
-import { ClearFields, Input, Save, Select } from "../components/shared";
+import {
+  ClearFields,
+  Input,
+  Save,
+  Select,
+  Header,
+  Wrapper,
+} from "../components/shared";
 import toast, { Toaster } from "react-hot-toast";
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-top: 40px;
-  width: 100%;
-`;
 const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -27,10 +28,7 @@ const Container = styled.div`
   overflow: auto;
   margin-bottom: 25px;
 `;
-const Header = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
+
 const DIYGroups = styled.div`
   display: flex;
   flex-direction: column;
