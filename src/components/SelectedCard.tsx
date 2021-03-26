@@ -57,7 +57,7 @@ const RedButton = styled.button`
   border: none;
   color: white;
   font-size: 16px;
-  padding: 10px 20px;
+  padding: 13px 20px;
   border-radius: 10px;
   width: 140px;
   &:focus {
@@ -70,7 +70,7 @@ const BlueButton = styled.button`
   border: none;
   color: white;
   font-size: 16px;
-  padding: 10px 20px;
+  padding: 13px 20px;
   border-radius: 10px;
   width: 140px;
   &:focus {
@@ -104,7 +104,7 @@ const SelectedCard = (props: any) => {
       </SelectedDetails>
       <SelectedDetails>
         <BlueButton>Edit</BlueButton>
-        <RedButton>Decline</RedButton>
+        <RedButton>Delete</RedButton>
       </SelectedDetails>
     </Card>
   );
